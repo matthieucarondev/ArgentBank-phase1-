@@ -1,13 +1,26 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import Home from './Home';
+import Home from './page/home/Home';
 import reportWebVitals from './reportWebVitals';
+import Footer from './component/footer/footer';
+import Nav from './component/navigation/nav';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+    <arcticle className="html">
+      <body>
+      {/* Navigation */}
+        <Nav/>
+      {/* Main content */}
+    
     <Home />
+   
+      {/* Footer */}
+      <Footer/>
+      </body>
+    </arcticle>
   </React.StrictMode>
 );
 

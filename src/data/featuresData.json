@@ -1,0 +1,20 @@
+[
+{
+    "title": "Vous êtes notre priorité #1",
+    "description": "Besoin de parler à un représentant ? Vous pouvez entrer en contact via notre chat 24h/24 et 7j/7 ou par téléphone en moins de 5 minutes.",
+    "icon": "chat",
+    "alt": "Chat Icon"
+  },
+  {
+    "title": "Plus d’économies signifie des taux plus élevés",
+    "description": "Plus vous épargnez avec nous, plus votre taux d’intérêt sera élevé !",
+    "icon": "money",
+    "alt": "Money Icon"
+  },
+  {
+    "title": "Une sécurité à laquelle vous pouvez faire confiance",
+    "description": "Nous utilisons un cryptage haut de gamme pour nous assurer que vos données et votre argent sont toujours en sécurité.",
+    "icon": "security",
+    "alt": "Security Icon"
+  }
+]
