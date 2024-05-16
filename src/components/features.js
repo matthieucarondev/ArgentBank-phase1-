@@ -1,8 +1,8 @@
 import React from 'react';
-import featuresData from '../../data/featuresData.json'; // Import the JSON data
-import chat from '../../img/icon-chat.png';
-import monney from '../../img/icon-money.png';
-import security from '../../img/icon-security.png';
+import featuresData from '../data/featuresData.json'; // Import the JSON data
+import chat from '../imgs/icon-chat.png';
+import monney from '../imgs/icon-money.png';
+import security from '../imgs/icon-security.png';
 
 const Features = () => {
     return (

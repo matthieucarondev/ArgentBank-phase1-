@@ -1,6 +1,6 @@
 import React from "react"; // Import React library
-import Banner from "../../component/banner/banner";
-import Features from "../../component/features/features";
+import Banner from "../components/banner";
+import Features from "../components/features";
 
 
 function Home() {
