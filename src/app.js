@@ -13,7 +13,7 @@ function App() {
              <Route path="/" element={<Root />}>
                     <Route index element={<Home />} />
                     <Route path="/Sign-In" element={<Login />} />
-                    <Route token path="/profile" element={<Profile />} />
+                    <Route token  path="/profile" element={<Profile />} />
                     <Route path="*" element={<Erreur404 />} />
 
                 </Route>

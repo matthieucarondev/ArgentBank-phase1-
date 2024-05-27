@@ -1,43 +1,72 @@
-import React from 'react';
+import {useEffect,useState} from 'react';
+import {  useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom/dist';
+import accountData  from "../data/accountData.json";
+import Account from '../components/account'
+import { updateProfile } from '../actions/userAction';
+
+
 
 const Profile = () => {
+
+  const dispatch = useDispatch()
+  const navigate = useNavigate();
+
+  const {token} = useSelector((state) => state.auth)
+  const {firstName} = useSelector((state) => state.user)
+  const {lastName} = useSelector((state) => state.user)
+
+  useEffect(() => {
+    if (!token){
+      navigate('/')
+    }
+  },[token,navigate]
+  )
+  
+ const [editing, setEditing]= useState (false);
+ const [newFirstname,setNewFirstname] = useState();
+ const [newLastname, setNewLastname] = useState();
+
+ const handleNamesToDB =() => {
+  dispatch(updateProfile(token, newFirstname, newLastname))
+  setEditing(!editing);
+ }
     return (
         <main class="main bg-dark">
-        <div class="header">
-          <h1>Welcome back<br />Tony Jarvis!</h1>
-          <button class="edit-button">Edit Name</button>
-        </div>
+         { !editing ?
+          <div className="header">
+            <h1>Welcome back<br />{firstName} {lastName} </h1>
+            <button className="edit-button" onClick={() => setEditing(!editing)}>Edit Name</button>
+          </div> 
+        :
+          <div className="header"> 
+            <h1>Welcome back<br /> </h1>
+            <div className='header-inputs'>
+              <input 
+                className='header-inputs-name' 
+                type='text' 
+                placeholder={firstName} 
+                onChange={(e) => setNewFirstname(e.target.value)}
+              />
+              <input 
+                className='header-inputs-name' 
+                type='text' 
+                placeholder={lastName} 
+                onChange={(e) => setNewLastname(e.target.value)}
+              />
+            </div> <br />
+            <div className='header-btns'>
+              <button className="save-cancel-button" onClick={handleNamesToDB}>Save</button>
+              <button className="save-cancel-button" onClick={() => setEditing(!editing)}>Cancel</button>
+            </div>
+          </div> 
+        }
         <h2 class="sr-only">Accounts</h2>
-        <section class="account">
-          <div class="account-content-wrapper">
-            <h3 class="account-title">Argent Bank Checking (x8349)</h3>
-            <p class="account-amount">$2,082.79</p>
-            <p class="account-amount-description">Available Balance</p>
-          </div>
-          <div class="account-content-wrapper cta">
-            <button class="transaction-button">View transactions</button>
-          </div>
-        </section>
-        <section class="account">
-          <div class="account-content-wrapper">
-            <h3 class="account-title">Argent Bank Savings (x6712)</h3>
-            <p class="account-amount">$10,928.42</p>
-            <p class="account-amount-description">Available Balance</p>
-          </div>
-          <div class="account-content-wrapper cta">
-            <button class="transaction-button">View transactions</button>
-          </div>
-        </section>
-        <section class="account">
-          <div class="account-content-wrapper">
-            <h3 class="account-title">Argent Bank Credit Card (x8349)</h3>
-            <p class="account-amount">$184.30</p>
-            <p class="account-amount-description">Current Balance</p>
-          </div>
-          <div class="account-content-wrapper cta">
-            <button class="transaction-button">View transactions</button>
-          </div>
-        </section>
+       
+          {accountData.map((account, index) => (
+          <Account key={index} account={account}  />
+        ))} 
+     
       </main>
     );
 };
