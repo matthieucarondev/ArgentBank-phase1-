@@ -12,7 +12,7 @@ function App() {
         createRoutesFromElements(
              <Route path="/" element={<Root />}>
                     <Route index element={<Home />} />
-                    <Route path="/Sign-In" element={<Login />} />
+                    <Route path="/signin" element={<Login />} />
                     <Route token  path="/profile" element={<Profile />} />
                     <Route path="*" element={<Erreur404 />} />
 

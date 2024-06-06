@@ -33,7 +33,7 @@ paths:
           description: Invalid Fields
         '500':
           description: Internal Server Error
-  /user/Sign-In:
+  /user/signup:
     post:
       tags:
         - User Module
@@ -112,13 +112,13 @@ paths:
           description: Invalid Fields
         '500':
           description: Internal Server Error
-  /user/profile/transaction:
+  /account:
     get:
       security:
         - Bearer: []
       tags:
-        - User Module Transaction
-      summary: User Transaction API
+        - User Module Account
+      summary: User Account API
       description: API for getting all accounts
       parameters:
         - in: header
@@ -132,19 +132,21 @@ paths:
         '200':
           description: User transaction retrieved successully
           schema:
-            $ref: '#/definitions/Transaction'
+            type: array
+            items: 
+              $ref: '#/definitions/Account'
         '400':
           description: Invalid Fields
         '500':
           description: Internal Server Error
-  /user/profile/transaction/{id}:
+  /account/{accountId}/transaction:
     get:
       security:
         - Bearer: []
       tags:
-        - User Module Transaction
-      summary: User Transaction API
-      description: API for fetching one user transaction
+        - User Module Account
+      summary: User Account API
+      description: API for fetching user's transactions for one account accountId
       parameters:
         - in: header
           name: Authorization
@@ -152,21 +154,24 @@ paths:
           required: true
           type: 'string'
         - in: path
-          name: id
-          type: integer
+          name: accountId
+          type: string
           required: true
-          description: 'ID of the transaction to get'
+          description: 'ID of the account'
       produces:
         - application/json
       responses:
         '200':
-          description: User Transaction retrieved successully
+          description: User's Transactions  for one account retrieved successully
           schema:
-            $ref: '#/definitions/Transaction'
+            type: array
+            items:
+              $ref: '#/definitions/Transaction'
         '400':
           description: Invalid Fields
         '500':
           description: Internal Server Error
+  /transaction/{transactionId}:
     put:
       security:
         - Bearer: []
@@ -181,8 +186,8 @@ paths:
           required: true
           type: 'string'
         - in: path
-          name: id
-          type: integer
+          name: transactionId
+          type: string
           required: true
           description: 'ID of the transaction to get'
         - in: body
@@ -216,8 +221,8 @@ paths:
           required: true
           type: 'string'
         - in: path
-          name: id
-          type: integer
+          name: transactionId
+          type: string
           required: true
           description: 'ID of the transaction to get'
       produces:
@@ -283,34 +288,85 @@ definitions:
         type: string
       lastName:
         type: string
+  Account:
+    type: object
+    properties:
+      id:
+        type: string
+        format: uuid
+      balance:
+        type: number
+        format: float
+      accountNumber:
+        type: string
+      accountTypeId:
+        type: integer
+      AccountType:
+        type: object
+        $ref: '#/definitions/AccountType'
+  AccountType:
+    type: object
+    properties:
+      id:
+        type: integer
+      label:
+        type: string
+      balanceLabel:
+        type: string
   Transaction:
+    type: object
+    properties:
+      id:
+        type: string
+        format: uuid
+      createdAt:
+        type: string
+        format: date
+      updatedAt:
+        type: string
+        format: date
+      description:
+        type: string
+      amount:
+        type: number
+        format: float
+      balanceAfterAmount:
+        type: number
+        format: float
+      accountId:
+        type: string
+        format: uuid
+      transactionTypeId:
+        type: integer
+      TransactionType:
+        type: object
+        $ref: '#/definitions/TransactionType'
+      transactionCategoryId:
+        type: integer
+      TransactionCategory:
+        type: object
+        $ref: '#/definitions/TransactionCategory'
+      notes:
+        type: string
+  TransactionType:
+    type: object
+    properties:
+      id:
+        type: number
+      label:
+        type: string
+  TransactionCategory:
     type: 'object'
     properties:
       id:
-        type: 'string'
-      transactionData:
-        type: 'object'
-        properties:
-          date:
-            type: 'string'
-          description:
-            type: 'string'
-          amount:
-            type: 'number'
-          detail:
-            type: 'object'
-            properties:
-              typeoftransaction:
-                type: 'string'
-              category:
-                type: 'string'
-              notes:
-                type: 'string'
+        type: number
+      label:
+        type: string
   TransactionUpdate:
-    type: 'object'
+    type: object
     properties:
-      category:
-        type: 'string'
+      transactionCategory:
+        type: number
       notes:
-        type: 'string'
+        type: string
  
