@@ -1,8 +1,15 @@
 
+
+
+ 
+
 const Account = ({account}) => {
      
 
-     return (
+// const token = useSelector((state) => state.auth.token);
+
+
+    return (
         <section class="account">
         <div class="account-content-wrapper">
              <h3 className="account-title">{account.name}</h3>
