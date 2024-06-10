@@ -34,6 +34,15 @@ export const loginAction = (email, password) => async (dispatch) => {
     });
   }
 };
+export const rehydrateToken = () => (dispatch) => {
+  const token = localStorage.getItem('jwtToken');
+  if (token) {
+    dispatch({
+      type: LOGIN_SUCCESS,
+      payload: { token },
+    });
+  }
+};
 export const logout = () => (dispatch) => {
   // Supprimez le token côté client lors de la déconnexion
   localStorage.removeItem('jwtToken');

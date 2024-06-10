@@ -3,6 +3,12 @@ import authReducer from '../reducers/authReducer';
 import userReducer from '../reducers/userReducer';
 
 
+const persistedState = {
+  auth: {
+    token: localStorage.getItem('token'),
+  },
+};
+
 const customMiddleware = store => next => action => {
   if (typeof action === 'function') {
     return action(store.dispatch, store.getState);
@@ -20,6 +26,7 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const store = createStore(
   rootReducer,
+  persistedState,
   composeEnhancers(applyMiddleware(customMiddleware))
 );
 

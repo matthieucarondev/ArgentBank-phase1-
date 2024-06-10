@@ -6,49 +6,21 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+.error-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* height: 100vh; Assurez-vous que le conteneur remplit toute la hauteur de la fenêtre */
+}
 
+.error-message {
+  color: red;
+  font-size: 1rem;
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-/* .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-} */
 .html {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -337,7 +309,7 @@ body {
   font-weight: bold;
   padding: 10px;
 margin-left: 10px;}
-  
+
 
 @media (min-width: 720px) {
   .account {
@@ -347,103 +319,6 @@ margin-left: 10px;}
   .account-content-wrapper.cta {
     flex: 0;
   }
-
-  .transaction-button {
-    width: 200px;
-  }
-}
-
-/* transaction.css */
-.transactions{
-  display:"flex"important;
-  flex-direction:"column"important;
-  justify-content:"center"important;
-  align-items:"center"important;
-  background-color:"white";
-  margin-top:"-4px"important;
-  color: white;
-}
-
-.transactions-amount{
-  margin: 0;
-  font-size:54px;
-}
-
-.transaction{
-  width: 85%;
-  margin: 1% auto;
-}
-.transaction-dropdown{
-  background-color: #fff;
-  border: 2px solid #2c3e50;
-  text-align: center;
-  font-size: 16px;
-}
-
-.transaction-dropdown-header{
-  position: relative;
-  display: flex;
-  justify-content: space-around;
-}
-
-.transaction-dropdown-icon{
-  cursor: pointer;
-  position: absolute;
-  left: 2%;
-  top: 25%;
-}
-
-.transaction-dropdown-details{
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  gap: 12px;
-  padding: 1% 8%;
-}
-
-.transaction-dropdown-details p{
-  margin: 0;
-  text-align: left;
-}
-
-.transaction-dropdown-details-pen{
-  cursor: pointer;
-}
-
-.transaction-columns{
-  display: flex;
-  justify-content: space-around;
-  font-size: 14px;
-  text-align: center;
-  font-weight: 700;
-  color: #00bc77;
-}
-.item {
-  position:relative
-
-
-}
-
-.description{
-  left: 60px;
-}
-.amount{
-  left: 50px;
-}
-
-.transaction-button {
-  display: block;
-  width: 100%;
-  padding: 8px;
-  font-size: 1.1rem;
-  font-weight: bold;
-  margin-top: 1rem;
-  border-color: #00bc77;
-  background-color: #00bc77;
-  color: #fff;
-}
-
-@media (min-width: 720px) {
 
   .transaction-button {
     width: 200px;

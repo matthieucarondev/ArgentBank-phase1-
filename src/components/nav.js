@@ -17,7 +17,13 @@ const Nav = () => {
     dispatch(logout());
     dispatch(profileReset());
   };
+  // Sauvegarde du prénom dans le localStorage lors de la connexion
+  if (token && firstName) {
+    localStorage.setItem('firstName', firstName);
+  }
 
+  // Récupération du prénom depuis le localStorage
+  const storedFirstName = localStorage.getItem('firstName');
   return (
     <>
     {token ? (
@@ -33,7 +39,7 @@ const Nav = () => {
         <div>
           <NavLink className="main-nav-item" to="/profile">
             <i className="fa fa-user-circle"></i>
-            {firstName}
+            {storedFirstName || firstName}
           </NavLink>
        
         <NavLink onClick={handleLogout} to="/" className="main-nav-item">
