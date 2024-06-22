@@ -56,14 +56,14 @@ const Profile = () => {
               <input 
                 className='header-inputs-name' 
                 type='text' 
-                placeholder={firstName} 
+                placeholder='firstName'
                 value={newFirstname}
                 onChange={(e) => setNewFirstname(e.target.value)}
               />
               <input 
                 className='header-inputs-name' 
                 type='text' 
-                placeholder={lastName} 
+                placeholder="lastName"
                 value={newLastname}
                 onChange={(e) => setNewLastname(e.target.value)}
               />

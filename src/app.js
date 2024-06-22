@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import './index.css';
 import Root from './components/root';
-import Home from './pages/Home';
+import Home from './pages/home';
 import Profile from './pages/profile';
 import Erreur404 from './pages/error';
 import Login from './pages/login';

@@ -117,8 +117,8 @@ paths:
       security:
         - Bearer: []
       tags:
-        - User Module Account
-      summary: User Account API
+        - Account Module 
+      summary:  Account API
       description: API for getting all accounts
       parameters:
         - in: header
@@ -144,8 +144,8 @@ paths:
       security:
         - Bearer: []
       tags:
-        - User Module Account
-      summary: User Account API
+        -  Account Module
+      summary: Account API
       description: API for fetching user's transactions for one account accountId
       parameters:
         - in: header
@@ -176,8 +176,8 @@ paths:
       security:
         - Bearer: []
       tags:
-        - User Module Transaction
-      summary: User Transaction API
+        -  Transaction Module
+      summary:  Transaction API
       description: API for updating a user transaction
       parameters:
         - in: header
@@ -211,8 +211,8 @@ paths:
       security:
         - Bearer: []
       tags:
-        - User Module Transaction
-      summary: User Transaction API
+        - Transaction Module 
+      summary: Transaction API
       description: API for delete a user transaction
       parameters:
         - in: header

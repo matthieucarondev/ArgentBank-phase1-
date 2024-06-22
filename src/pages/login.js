@@ -28,16 +28,7 @@ const Login = () => {
           navigate('/profile')
         }
       }, [token, navigate,dispatch])
-        //  vérifier si les information de connexion sont  corrécte
-        // const user = userData.find((user)=>user.email === username && user.password === password);
-        // if(user){
-        //     setError('');
-        //     
-        //     //si les informations d'identification sont valide ,redirigez l'utilisateur ou effectuez une autre action
-        //   
-        // }else{
-        //     setError('Nom d’utilisateur ou mot de passe non valide');
-        // }
+   
     return (
         <>
       <main className="main bg-dark">
