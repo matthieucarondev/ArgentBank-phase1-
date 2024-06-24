@@ -2,7 +2,7 @@ import {useEffect,useState} from 'react';
 import {  useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom/dist';
 import accountData  from "../data/accountData.json";
-import Account from '../components/account'
+import Account from '../components/Account'
 import { updateProfile } from '../actions/userAction';
 
 
@@ -29,12 +29,16 @@ const Profile = () => {
  const [error, setError] = useState('');
 
  const handleNamesToDB =() => {
-  if (!newFirstname.trim()|| !newLastname.trim() ){
+  if (!newFirstname.trim()&& !newLastname.trim() ){
     setError('Both fields are required.');
     return;
   }
+  if (newFirstname !== firstName) {
+    dispatch(updateProfile(token, newFirstname, lastName));
+  } else if (newLastname !== lastName) {
+    dispatch(updateProfile(token, firstName, newLastname));
+  }
   setError('');
-  dispatch(updateProfile(token, newFirstname, newLastname))
   setEditing(false);
  }
  const handleEditButtonClick = () => {
@@ -56,14 +60,14 @@ const Profile = () => {
               <input 
                 className='header-inputs-name' 
                 type='text' 
-                placeholder='firstName'
+                placeholder={firstName}
                 value={newFirstname}
                 onChange={(e) => setNewFirstname(e.target.value)}
               />
               <input 
                 className='header-inputs-name' 
                 type='text' 
-                placeholder="lastName"
+                placeholder={lastName}
                 value={newLastname}
                 onChange={(e) => setNewLastname(e.target.value)}
               />
