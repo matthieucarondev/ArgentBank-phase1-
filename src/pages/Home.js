@@ -6,9 +6,8 @@ import Features from "../components/features";
 function Home() {
   return (
     <main>
-        {/* Hero section */}
+      
         <Banner/>
-        {/* Features section */}
         <Features/>
    </main>
   );
