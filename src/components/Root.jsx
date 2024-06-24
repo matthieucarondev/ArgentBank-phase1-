@@ -1,7 +1,7 @@
 import React from 'react';
-import Nav from './nav';
+import Nav from './Nav';
 import { Outlet } from 'react-router-dom/dist';
-import Footer from './footer';
+import Footer from './Footer';
 
 export default function Root() {
     return (

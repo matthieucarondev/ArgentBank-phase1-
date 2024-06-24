@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import './index.css';
-import Root from './components/root';
+import Root from './components/Root';
 import Home from './pages/home';
 import Profile from './pages/profile';
 import Erreur404 from './pages/error';
@@ -8,7 +8,7 @@ import Login from './pages/login';
 import {Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { rehydrateToken } from './actions/authAction';
-import ProtectedRoute from './components/protectedRoute';
+import ProtectedRoute from './components/ProtectedRoute';
 
 function App() {
     const dispatch = useDispatch();

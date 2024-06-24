@@ -1,6 +1,6 @@
 import React from 'react';
 import featuresData from '../data/featuresData.json'; // Import the JSON data
-import Feature from './feature';
+import Feature from './Feature';
 
 
 const Features = () => {
