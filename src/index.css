@@ -166,7 +166,6 @@ body {
 
 /* Sign-in form */
 .sign-in-button,
-.save-cancel-button,
 .transaction-button {
   display: block;
   width: 100%;
@@ -273,8 +272,14 @@ body {
   width: 100%;
   flex: 1;
 }
-
-.edit-button,
+.save-cancel-button,.edit-button
+{ padding: 8px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-top: 1rem;
+  border-color: #00bc77;
+  background-color: #00bc77;
+  color: #fff;}
 .header {
   color: #fff;
   margin-bottom: 2rem;
