@@ -14,8 +14,7 @@ export const loginAction = (email, password) => async (dispatch) => {
     );
     const token = response.data.body.token;
     
-    // Stockage du token côté client (par exemple, dans localStorage)
-    localStorage.setItem('jwtToken', token);
+   
 
     // Dispatch de l'action pour mettre à jour l'état d'authentification
     dispatch({
@@ -35,7 +34,7 @@ export const loginAction = (email, password) => async (dispatch) => {
   }
 };
 export const rehydrateToken = () => (dispatch) => {
-  const token = localStorage.getItem('jwtToken');
+  const token = localStorage.getItem('token');
   if (token) {
     dispatch({
       type: LOGIN_SUCCESS,

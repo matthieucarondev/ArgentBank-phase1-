@@ -14,21 +14,33 @@ const Login = () => {
   useEffect(() => {
     const storedEmail = localStorage.getItem('rememberedEmail');
     const storedPassword = localStorage.getItem('rememberedPassword');
-    if (storedEmail && storedPassword) {
+    const storedRememberMe = localStorage.getItem('rememberMe') === 'true';
+    if (storedEmail && storedPassword && storedRememberMe) {
       setEmail(storedEmail);
       setPassword(storedPassword);
-      setRememberMe(true); // Activer la case à cocher "Remember me"
+      setRememberMe(true);
     }
-  }, []); // [] signifie que useEffect s'exécute une seule fois à l'initialisation
+
+    const sessionEmail = sessionStorage.getItem('rememberedEmail');
+    const sessionPassword = sessionStorage.getItem('rememberedPassword');
+    if (sessionEmail && sessionPassword && !storedRememberMe) {
+      setEmail(sessionEmail);
+      setPassword(sessionPassword);
+    }
+  }, []);
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
     if (rememberMe) {
       localStorage.setItem('rememberedEmail', email);
       localStorage.setItem('rememberedPassword', password);
+      localStorage.setItem('rememberMe', 'true');
     } else {
       localStorage.removeItem('rememberedEmail');
       localStorage.removeItem('rememberedPassword');
+      localStorage.removeItem('rememberMe');
+      sessionStorage.setItem('rememberedEmail', email);
+      sessionStorage.setItem('rememberedPassword', password);
     }
     dispatch(loginAction(email, password));
   };
@@ -38,9 +50,15 @@ const Login = () => {
     if (token) {
       console.log('Login successful');
       dispatch(userProfile(token));
+      if (rememberMe) {
+        localStorage.setItem('token', token);
+      } else {
+        localStorage.removeItem('token');
+        sessionStorage.setItem('token', token);
+      }
       navigate('/profile');
     }
-  }, [token, navigate, dispatch]);
+  }, [token, rememberMe, navigate, dispatch]);
 
   return (
     <main className="login bg-dark">
@@ -54,7 +72,7 @@ const Login = () => {
               onChange={(e) => setEmail(e.target.value)}
               type="text"
               id="username"
-              value={email} // Lier la valeur à l'état email
+              value={email}
             />
           </div>
           <div className="input-wrapper">
@@ -63,7 +81,7 @@ const Login = () => {
               onChange={(e) => setPassword(e.target.value)}
               type="password"
               id="password"
-              value={password} // Lier la valeur à l'état password
+              value={password}
             />
           </div>
           <div className="input-remember">
