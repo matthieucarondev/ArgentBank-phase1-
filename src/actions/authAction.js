@@ -34,7 +34,7 @@ export const loginAction = (email, password) => async (dispatch) => {
   }
 };
 export const rehydrateToken = () => (dispatch) => {
-  const token = localStorage.getItem('token');
+  const token = localStorage.getItem('token')||sessionStorage.getItem('token');
   if (token) {
     dispatch({
       type: LOGIN_SUCCESS,
